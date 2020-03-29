@@ -1,0 +1,11 @@
+extends _layout
+
+block content
+    if error
+      <div>#{error}</div>
+
+    <form method="post" action="/login">
+      <input type="text" name="username" placeholder="Your username" />
+      <input type="password" name="password" placeholder="Your password" />
+      <input type="submit" value="Log in" />
+    </form>
