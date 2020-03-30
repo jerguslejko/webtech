@@ -3,3 +3,11 @@ extends _layout
 block content
     <h1>hey, #{signedIn.username}</h1>
 
+    <h2>My boards</h2>
+
+    <ul>
+        for board in boards
+            <li>
+                <a href="/boards/#{board.id}">#{board.title}</a>
+            </li>
+    </ul>

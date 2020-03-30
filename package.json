@@ -5,18 +5,21 @@
         "dev": "nodemon --quiet --watch src --ext ts --exec 'ts-node ./src/server.ts'",
         "start": "node dist/server.js",
         "build": "tsc -p .",
-        "database:setup": "rm database.sqlite; ts-node src/scripts/database-setup.ts"
+        "database:setup": "rm database.sqlite; touch database.sqlite; ts-node src/scripts/database-setup.ts"
     },
     "dependencies": {
+        "@types/faker": "^4.1.11",
         "bcrypt": "^4.0.1",
         "body-parser": "^1.19.0",
         "connect-flash": "^0.1.1",
         "cookie-parser": "^1.4.5",
         "cookie-session": "^1.4.0",
         "express": "^4.17.1",
+        "faker": "^4.1.0",
         "passport": "^0.4.1",
         "passport-local": "^1.0.0",
         "pug": "^2.0.4",
+        "sequelize": "^5.21.5",
         "sqlite": "^3.0.6"
     },
     "devDependencies": {
@@ -31,6 +34,7 @@
         "@types/express-session": "^1.17.0",
         "@types/cookie-session": "^2.0.39",
         "@types/bcrypt": "^3.0.0",
-        "@types/connect-flash": "0.0.35"
+        "@types/connect-flash": "0.0.35",
+        "@types/sequelize": "^4.28.8"
     }
 }

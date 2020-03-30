@@ -1,40 +1,17 @@
 import * as passportLocal from 'passport-local';
-import * as bcrypt from 'bcrypt';
-import * as database from './database';
 import { Request, Response, NextFunction } from 'express';
-
-interface User {
-    id: number;
-    username: string;
-    password: string;
-}
-
-export async function getUserByUsername(username: string): Promise<User | undefined> {
-    const query = await database
-        .connection()
-        .prepare('select * from users where username = ?', [username]);
-
-    return await query.get();
-}
-
-export function validatePassword(user: User, password: string): boolean {
-    return bcrypt.compareSync(password, user.password);
-}
-
-export function hashPassword(password: string): string {
-    return bcrypt.hashSync(password, 10);
-}
+import { User } from './models';
 
 export function authStrategy() {
     return new passportLocal.Strategy(async (username, password, done) => {
-        const user = await getUserByUsername(username);
+        const user = await User.findOne({ where: { username } });
 
         if (!user) {
             done(null, false, { message: 'Incorrect username.' });
             return;
         }
 
-        if (!validatePassword(user, password)) {
+        if (!user.validatePassword(password)) {
             done(null, false, { message: 'Incorrect password.' });
             return;
         }

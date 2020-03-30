@@ -1,0 +1,17 @@
+extends ../_layout
+
+block content
+    <h1>#{board.title}</h1>
+
+    <h2>Columns:</h2>
+
+    for record in grid
+        - var column = record[0]
+        - var tasks = record[1]
+
+        <h3>#{column.title}</h3>
+
+        <ul>
+        for task in tasks
+            <li>#{task.body}</li>
+        </ul>

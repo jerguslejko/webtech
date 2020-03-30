@@ -1,12 +1,12 @@
-import * as sqlite from 'sqlite';
+import { Sequelize } from 'sequelize';
 import * as path from 'path';
-import { hashPassword } from './auth';
+import * as models from './models';
 
 const DATABASE_PATH = path.resolve(path.join(__dirname, '../database.sqlite'));
 
-let CONNECTION: sqlite.Database | null = null;
+let CONNECTION: Sequelize | null = null;
 
-export function connection(): sqlite.Database {
+export function connection(): Sequelize {
     if (!CONNECTION) {
         throw new Error('Not connected to the database.');
     }
@@ -16,10 +16,18 @@ export function connection(): sqlite.Database {
 
 export async function connect() {
     if (!CONNECTION) {
-        CONNECTION = await sqlite.open(DATABASE_PATH);
+        CONNECTION = new Sequelize({
+            dialect: 'sqlite',
+            storage: DATABASE_PATH,
+            logging: false,
+        });
+
+        Object.values(models).forEach(model => {
+            model.boot();
+        });
     }
 
-    return CONNECTION;
+    await CONNECTION.sync();
 }
 
 export async function disconnect() {
@@ -28,24 +36,4 @@ export async function disconnect() {
     }
 
     return CONNECTION.close();
-}
-
-export async function migrate() {
-    const db = await connection();
-
-    await db.run(
-        `CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY,
-            username VARCHAR NOT NULL,
-            password VARCHAR NOT NULL
-        )`,
-    );
-}
-
-export async function seed() {
-    const db = await connection();
-
-    await db.run(
-        `INSERT INTO users (username, password) VALUES ('jergus', '${hashPassword('password')}')`,
-    );
 }
