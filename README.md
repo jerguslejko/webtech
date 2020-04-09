@@ -6,8 +6,12 @@ sudo npm install -g n
 sudo n stable
 sudo apt-get install sqlite3
 ```
-- Run the web app:
+- Set up webapp (only once):
 ```bash
 npm install
+npm run database:setup
+```
+- Run webapp:
+```bash
 npm  run dev
 ```
