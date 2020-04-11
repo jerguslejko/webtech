@@ -2,16 +2,18 @@ extends ../_layout
 
 block content
     <h1>#{board.title}</h1>
-
-    <h2>Columns:</h2>
-
+    <div class="row">
     for record in grid
-        - var column = record[0]
+        - var col = record[0]
         - var tasks = record[1]
-
-        <h3>#{column.title}</h3>
-
-        <ul>
-        for task in tasks
-            <li>#{task.body}</li>
-        </ul>
+            <div class="column-portlet">
+                <h3>#{col.title}</h3>
+                <div class="column">
+                    for task in tasks
+                        <div class="portlet">
+                            <div class="portlet-header">#{task.body}</div>
+                            <div class="portlet-content">Hello World</div>
+                        </div>
+                </div>
+            </div>
+    </div>
