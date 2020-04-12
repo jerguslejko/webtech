@@ -7,13 +7,61 @@ block content
         - var col = record[0]
         - var tasks = record[1]
             <div class="column-portlet">
-                <h3>#{col.title}</h3>
+                <h3>#{col.title}<button class="open-newtaskmodal">Add Task</button></h3>
+                
                 <div class="column">
                     for task in tasks
                         <div class="portlet">
-                            <div class="portlet-header">#{task.body}</div>
-                            <div class="portlet-content">Hello World</div>
+                            <h4>#{task.body}<button class="open-edittaskmodal">Edit</button></h4>
                         </div>
                 </div>
             </div>
+    </div>
+    <button class="open-newcolmodal">Add Column</button>
+    <div id="newcolmodal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+            <span class="close-newcolmodal">&times;</span>
+            <h2>Add new Column</h2>
+            </div>
+            <div class="modal-body">
+                <label for="colname">Column name:</label>
+                <input type="text" id="colname" name="colname"><br><br>
+            </div>
+            <div class="modal-footer">
+            <button >Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="newtaskmodal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+            <span class="close-newtaskmodal">&times;</span>
+            <h2>Create task</h2>
+            </div>
+            <div class="modal-body">
+                <label for="taskname">Task name:</label>
+                <input type="text" id="taskname" name="taskname"><br><br>
+            </div>
+            <div class="modal-footer">
+            <button >Create</button>
+            </div>
+        </div>
+    </div>
+
+        <div id="edittaskmodal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+            <span class="close-edittaskmodal">&times;</span>
+            <h2>Edit task</h2>
+            </div>
+            <div class="modal-body">
+                <label for="taskname">Task name:</label>
+                <input type="text" id="taskname" name="taskname"><br><br>
+            </div>
+            <div class="modal-footer">
+            <button >Save</button>
+            </div>
+        </div>
     </div>
