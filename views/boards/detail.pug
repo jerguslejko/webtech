@@ -3,16 +3,16 @@ extends ../_layout
 block content
     <h1>#{board.title}</h1>
     <div class="row">
-    for record in grid
+    for record, i in grid
         - var col = record[0]
         - var tasks = record[1]
-            <div class="column-portlet">
+            <div class="column-portlet" id= "col" + i>
                 <h3>#{col.title}</h3>
                 <button class="open-modal">Edit</button>
                 <button class="open-modal">New</button>
                 <div class="column">
-                    for task in tasks
-                        <div class="portlet">
+                    for task, j in tasks
+                        <div class="portlet" id= "task" + i + j>
                             <h4>#{task.body}</h4>
                             <button class="open-modal">Edit</button>
                         </div>
@@ -36,7 +36,7 @@ block content
                 <input type="text" id="name" name="name"><br><br>
             </div>
             <div class="modal-footer">
-                <button>Submit</button>
+                <button class="submit-modal">Submit</button>
             </div>
         </div>
     </div>

@@ -67,10 +67,12 @@ function myFunction() {
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
-// NEW COLUMN POP UP
-// pop up itself
+// POP UP
 var modal = document.getElementById("modal");
 var close_modal = document.getElementsByClassName("close-modal")[0];
+
+var last_call_from;
+
 
 close_modal.onclick = function() {
     modal.style.display = "none";
@@ -80,7 +82,7 @@ $(".open-modal").on('click', function(event){
     var modal_type = $(this).text();
     var title;
     var submit;
-    console.log(modal_type);
+    last_call_from = $(this).parent().attr("id");
     if(modal_type === "New"){
         submit = "Create";
 
@@ -110,6 +112,10 @@ $(".open-modal").on('click', function(event){
     $(".modal").find(".modal-content").find(".modal-body").html('<label for="name">Name:</label><input type="text" id="name" name="name"><br><br><label for="desc">Description:</label><input type="text" id="desc" name="desc"><br><br>');
     $(".modal").find(".modal-content").find(".modal-footer").find("button").text(submit);
     modal.style.display = "block";
+})
+
+$(".submit-modal").on('click', function(event){
+    modal.style.display = "none";
 })
 
 // When the user clicks anywhere outside of the popup, close it
