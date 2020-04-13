@@ -69,53 +69,52 @@ function myFunction() {
 ////////////////////////////////////////////////////////////////////////////////////////
 // NEW COLUMN POP UP
 // pop up itself
-var newcolmodal = document.getElementById("newcolmodal");
-//button to open and close pop up
-var close_newcolmodal = document.getElementsByClassName("close-newcolmodal")[0];
-close_newcolmodal.onclick = function() {
-    newcolmodal.style.display = "none";
+var modal = document.getElementById("modal");
+var close_modal = document.getElementsByClassName("close-modal")[0];
+
+close_modal.onclick = function() {
+    modal.style.display = "none";
 }
 // buttons to open pop up
-$(".open-newcolmodal").on('click', function(event){
-        newcolmodal.style.display = "block";
+$(".open-modal").on('click', function(event){
+    var modal_type = $(this).text();
+    var title;
+    var submit;
+    console.log(modal_type);
+    if(modal_type === "New"){
+        submit = "Create";
+
+        if($(this).parent().hasClass("row")){
+            title = "Create new Column";
+        } 
+        else if($(this).parent().hasClass("column-portlet")){
+            title = "Create new Task";
+        } 
+    }
+
+    else if(modal_type === "Edit"){
+            
+        submit = "Save";
+
+        if($(this).parent().hasClass("portlet")){
+            title = "Edit Task";
+        } 
+        else if($(this).parent().hasClass("column-portlet")){
+            title = "Edit Column";
+        }
+    }
+
+
+
+    $(".modal").find(".modal-content").find(".modal-header").find("h2").text(title);
+    $(".modal").find(".modal-content").find(".modal-body").html('<label for="name">Name:</label><input type="text" id="name" name="name"><br><br><label for="desc">Description:</label><input type="text" id="desc" name="desc"><br><br>');
+    $(".modal").find(".modal-content").find(".modal-footer").find("button").text(submit);
+    modal.style.display = "block";
 })
 
 // When the user clicks anywhere outside of the popup, close it
 window.onclick = function(event) {
-    if (event.target == newcolmodal) {
-        newcolmodal.style.display = "none";
-    }
-    else if (event.target == newtaskmodal) {
-        newtaskmodal.style.display = "none";
-    }
-
-    else if (event.target == edittaskmodal) {
-        edittaskmodal.style.display = "none";
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
   }
-////////////////////////////////////////////////////////////////////////////////////////
-// NEW TASK POP UP
-// pop up itself
-var newtaskmodal = document.getElementById("newtaskmodal");
-//button to open and close pop up
-var close_newtaskmodal = document.getElementsByClassName("close-newtaskmodal")[0];
-close_newtaskmodal.onclick = function() {
-    newtaskmodal.style.display = "none";
-}
-// buttons to open pop up
-$(".open-newtaskmodal").on('click', function(event){
-    newtaskmodal.style.display = "block";
-})
-////////////////////////////////////////////////////////////////////////////////////////
-//  EDIT TASK POP UP
-// pop up itself
-var edittaskmodal = document.getElementById("edittaskmodal");
-//button to open and close pop up
-var close_edittaskmodal = document.getElementsByClassName("close-edittaskmodal")[0];
-close_edittaskmodal.onclick = function() {
-    edittaskmodal.style.display = "none";
-}
-// buttons to open pop up
-$(".open-edittaskmodal").on('click', function(event){
-    edittaskmodal.style.display = "block";
-})
