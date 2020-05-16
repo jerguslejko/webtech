@@ -13,5 +13,5 @@ npm run database:setup
 ```
 - Run webapp:
 ```bash
-npm  run dev
+npm run dev
 ```
