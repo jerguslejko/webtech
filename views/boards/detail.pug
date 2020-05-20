@@ -6,13 +6,13 @@ block content
     for record, i in grid
         - var col = record[0]
         - var tasks = record[1]
-            <div class="column-portlet" id= "col" + i>
+            <div class="column-portlet" id= "col" + i data-column-id="#{col.id}">
                 <h3>#{col.title}</h3>
                 <button class="open-modal">Edit</button>
                 <button class="open-modal">New</button>
-                <div class="column">
+                <div class="column" data-column-id="#{col.id}">
                     for task, j in tasks
-                        <div class="portlet" id= "task" + i + j>
+                        <div class="portlet" id= "task" + i + j data-task-id="#{task.id}">
                             <h4>#{task.body}</h4>
                             <button class="open-modal">Edit</button>
                         </div>

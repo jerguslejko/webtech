@@ -9,7 +9,7 @@ export class Board extends Model {
     public user_id!: number;
 
     async columns(): Promise<Column[]> {
-        return Column.findAll({ where: { board_id: this.id } });
+        return Column.findAll({ where: { board_id: this.id }, order: ['ordering'] });
     }
 
     async grid(): Promise<[Column, Task[]][]> {

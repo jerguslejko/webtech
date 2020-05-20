@@ -6,6 +6,18 @@ $('.column').sortable({
         tilt_direction(ui.item);
     },
     stop: function (event, ui) {
+        postRequest(
+            '/api/tasks/reorder',
+            Array.from($('.column')).map((column) => {
+                const tasks = $(column)
+                    .sortable('toArray', { attribute: 'data-task-id' })
+                    .filter(Boolean)
+                    .map((x, i) => ({ id: parseInt(x), ordering: i + 1 }));
+
+                return { tasks, column_id: parseInt($(column).attr('data-column-id')) };
+            }),
+        );
+
         ui.item.removeClass('tilt');
         $('html').unbind('mousemove', ui.item.data('move_handler'));
         ui.item.removeData('move_handler');
@@ -18,6 +30,14 @@ $('.row').sortable({
         tilt_direction(ui.item);
     },
     stop: function (event, ui) {
+        postRequest(
+            '/api/columns/reorder',
+            $(this)
+                .sortable('toArray', { attribute: 'data-column-id' })
+                .filter(Boolean)
+                .map((id, i) => ({ id: parseInt(id), ordering: i })),
+        );
+
         ui.item.removeClass('tilt');
         $('html').unbind('mousemove', ui.item.data('move_handler'));
         ui.item.removeData('move_handler');
@@ -114,3 +134,11 @@ window.onclick = function (event) {
         modal.style.display = 'none';
     }
 };
+
+function postRequest(url, payload) {
+    return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+}
