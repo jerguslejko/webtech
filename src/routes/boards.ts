@@ -10,6 +10,6 @@ export default function (app: express.Express): void {
             return res.redirect('/');
         }
 
-        res.render('boards/detail', { board, grid: await board.grid() });
+        res.render('boards/detail', { board, grid: await board.grid(), boards: await req.signedIn.boards() });
     });
 }

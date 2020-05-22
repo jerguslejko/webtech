@@ -63,8 +63,7 @@ $('.column-portlet').addClass('ui-widget ui-widget-content ui-helper-clearfix ui
 ////////////////////////////////////////////////////////////////////////////////////////
 // NAVBAR
 var navbar = document.getElementById('myTopnav');
-var sticky = navbar.offsetTop;
-function myFunction() {
+function responsive() {
     var x = document.getElementById('myTopnav');
     if (x.className === 'topnav') {
         x.className += ' responsive';
@@ -73,7 +72,7 @@ function myFunction() {
     }
 }
 window.onscroll = function () {
-    if (window.pageYOffset >= sticky) {
+    if (window.pageYOffset > 0) {
         navbar.classList.add('sticky');
     } else {
         navbar.classList.remove('sticky');

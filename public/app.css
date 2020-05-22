@@ -1,6 +1,7 @@
 body {
     color: #969696;
     background: #2c2c2c;
+    margin : 0px;
 }
 
 .text-right {
@@ -8,13 +9,9 @@ body {
 }
 .tilt.right {
     transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -webkit-transform: rotate(3deg);
 }
 .tilt.left {
     transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
 }
 .column {
     width: 170px;
@@ -22,17 +19,18 @@ body {
     padding-bottom: 100px;
 }
 .column-portlet {
-    margin: 0 1em 1em 0;
-    padding: 0.3em;
     float: left;
+    margin: 1em 1em 1em 1em;
+    padding: 0.5em;
+
 }
 .row {
     float: left;
     padding-bottom: 100px;
 }
 .portlet {
-    margin: 0 1em 1em 0;
-    padding: 0.3em;
+    margin: 1em 1em 1em 1em;
+    padding: 0.5em;
 }
 
 /* Add a black background color to the top navigation */
@@ -191,12 +189,7 @@ display: block;
     animation-name: animatetop;
     animation-duration: 0.4s
   }
-  
-  /* Add Animation */
-  @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-  }
+
   
   @keyframes animatetop {
     from {top:-300px; opacity:0}
@@ -211,8 +204,6 @@ display: block;
   }
   
   ​
-  /* The Close Button */
-
   .close-modal
    {
     color: white;
@@ -226,9 +217,14 @@ display: block;
  {
     color: #000;
     text-decoration: none;
+  }
+  .hvr-btn:hover,
+  .hvr-btn:focus,
+  button:hover,
+  button:focus
+  {
     cursor: pointer;
   }
-  
   .modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
