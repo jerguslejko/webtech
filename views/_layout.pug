@@ -14,9 +14,7 @@
       <a href="/" class="active hvr-btn">Home</a>
       if signedIn
         <div class="dropdown">
-          <button class="dropbtn hvr-btn">Boards
-            <i class="fa fa-caret-down"></i>
-          </button>
+          <button class="dropbtn hvr-btn">Boards</button>
           <div class="dropdown-content hvr-btn">
               for board in boards
                 <a href="/boards/#{board.id}">#{board.title}</a>
@@ -25,7 +23,6 @@
       <a class="hvr-btn" href="#about">About</a>
       if signedIn
         <a href="/logout">Log Out</a>
-      <a href="javascript:void(0);" class="icon" onclick="responsive()">&#9776;</a>
     </div>
 
     block content
