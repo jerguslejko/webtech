@@ -42,7 +42,7 @@ export class Task extends Model {
             {
                 name: DataTypes.TEXT,
                 body: DataTypes.TEXT,
-                deadline: DataTypes.DATE,
+                deadline: { type: DataTypes.DATE, allowNull: true },
                 user_id: DataTypes.NUMBER,
                 board_id: DataTypes.NUMBER,
                 column_id: DataTypes.NUMBER,

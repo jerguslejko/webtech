@@ -20,7 +20,10 @@ export default function (app: express.Express): void {
     app.post('/api/columns/:id/new-task', restricted, async (req, res) => {
         const column = await Column.findByPk(req.params.id);
         if (!column) return res.redirect(`/`);
-        await column.addTask(req.body);
+        await column.addTask({
+            ...req.body,
+            deadline: req.body.deadline ? req.body.deadline : null,
+        });
         res.redirect(`/boards/${column.board_id}`);
     });
 
