@@ -2,12 +2,12 @@ extends _layout
 
 block content
     <div class="homepage">
-        <h1>Login</h1>
+        <h1>Registration</h1>
 
         if error
           <div class="validation-error">#{error}</div>
 
-        <form method="post" action="/login">
+        <form method="post" action="/register">
             <label class="form-field">
                 <p>Username:</p>
                 <input type="text" name="username" placeholder="Your username" />
@@ -18,6 +18,11 @@ block content
                 <input type="password" name="password" placeholder="Your password" />
             </label>
 
-            <button type="submit">Log in</button>
+            <label class="form-field">
+                <p>Password again:</p>
+                <input type="password" name="password_confirmation" placeholder="Password confirmation" />
+            </label>
+
+            <button type="submit">Register</button>
         </form>
     </div>
