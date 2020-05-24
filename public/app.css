@@ -319,3 +319,8 @@ button:hover {
     font-size: 0.9em;
     font-weight: 600;
 }
+
+.homepage-call {
+    text-align: center;
+    font-weight: bold;
+}

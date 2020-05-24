@@ -14,6 +14,9 @@ block content
         <h2>Upcoming deadlines:</h2>
 
         <div>
+            if upcoming.length == 0
+                <div class="homepage-call">There are no upcoming deadlines. Take a break.</div>
+
             for task in upcoming
                 <a href="/boards/#{task.board_id}" class="homepage-task">
                     <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
@@ -23,6 +26,9 @@ block content
         <h2>Missed deadlines:</h2>
 
         <div>
+            if missed.length == 0
+                <div class="homepage-call">You have not missed any deadlines. Nice!</div>
+
             for task in missed
                 <a href="/boards/#{task.board_id}" class="homepage-task">
                     <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
