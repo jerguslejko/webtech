@@ -24,6 +24,7 @@ body {
 .column {
     width: 300px;
     float: left;
+    padding-bottom: 10px;
 }
 .column-portlet {
     float: left;
