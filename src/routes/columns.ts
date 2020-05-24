@@ -4,7 +4,7 @@ import { Column } from '../models/Column';
 
 export default function (app: express.Express): void {
     app.post('/api/columns/create', restricted, async (req, res) => {
-        const column = await Column.create(req.body);
+        const column = await Column.create({ ...req.body, user_id: req.signedIn.id });
         res.redirect(`/boards/${column.board_id}`);
     });
 
@@ -20,7 +20,10 @@ export default function (app: express.Express): void {
     app.post('/api/columns/:id/new-task', restricted, async (req, res) => {
         const column = await Column.findByPk(req.params.id);
         if (!column) return res.redirect(`/`);
-        await column.addTask(req.body);
+        await column.addTask({
+            ...req.body,
+            deadline: req.body.deadline ? req.body.deadline : null,
+        });
         res.redirect(`/boards/${column.board_id}`);
     });
 

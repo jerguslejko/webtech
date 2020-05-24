@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Busybee</title>
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
@@ -21,9 +21,12 @@
                 <a href="/boards/#{board.id}">#{board.title}</a>
           </div>
         </div>
-      <a class="hvr-btn" href="#about">About</a>
+      <a class="hvr-btn" href="/about">About</a>
       if signedIn
         <a href="/logout">Log Out</a>
+      else
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
     </div>
 
     block content

@@ -24,6 +24,7 @@ body {
 .column {
     width: 300px;
     float: left;
+    padding-bottom: 10px;
 }
 .column-portlet {
     float: left;
@@ -322,5 +323,14 @@ button:hover {
 
 .homepage-call {
     text-align: center;
+    font-weight: bold;
+}
+
+.validation-error {
+    padding: 1em;
+    border-radius: 0.5em;
+    border: 1px solid rgba(255, 0, 0, 0.6);
+    background: rgba(255, 0, 0, 0.2);
+    color: rgb(255, 255, 255);
     font-weight: bold;
 }

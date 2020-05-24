@@ -4,7 +4,30 @@ block content
     <div class="homepage">
         <h1>Hey, #{signedIn.username}</h1>
 
-        <h2>Your boards:</h2>
+        <div class="flex items-center space-between">
+            <h2>Your boards:</h2>
+
+            <div class="modal-wrapper ml-20">
+                <button class="open-modal">New board</button>
+                <form class="modal" method="post" action="/api/boards/create">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>New board</h2>
+                            <span class="close-modal hvr-btn">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <label class="form-field">
+                                <p>Title:</p>
+                                <input type="text" name="title" />
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="submit-modal">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <div>
             for board in boards
