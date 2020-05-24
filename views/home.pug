@@ -1,13 +1,13 @@
 extends _layout
 
 block content
-    <h1>Hey, #{signedIn.username}</h1>
+    <div class="homepage">
+        <h1>Hey, #{signedIn.username}</h1>
 
-    <h2>Your Kanban Boards:</h2>
+        <h2>Your boards:</h2>
 
-    <ul>
-        for board in boards
-            <li>
-                <a href="/boards/#{board.id}">#{board.title}</a>
-            </li>
-    </ul>
+        <div>
+            for board in boards
+                <a href="/boards/#{board.id}" class="homepage-board">#{board.title}</a>
+        </div>
+    </div>

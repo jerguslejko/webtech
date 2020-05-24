@@ -284,3 +284,22 @@ button {
 button:hover {
     box-shadow: 0 0 4px rgba(0, 0, 255, 0.2);
 }
+
+.homepage {
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.homepage-board {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    background: white;
+    padding: 1em;
+    border-radius: 1em;
+    margin: 0.5em 0;
+}
