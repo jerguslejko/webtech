@@ -38,6 +38,12 @@ export class Board extends Model {
             {
                 sequelize: connection(),
                 modelName: 'board',
+                hooks: {
+                    async beforeDestroy(board) {
+                        const column = await board.columns();
+                        column.forEach((column) => column.destroy());
+                    },
+                },
             },
         );
     }

@@ -1,8 +1,26 @@
 import * as express from 'express';
 import { restricted } from '../auth';
-import { Board, Column, Task } from '../models';
+import { Board } from '../models';
 
 export default function (app: express.Express): void {
+    app.post('/api/boards/:id/update', restricted, async (req, res) => {
+        const board = await Board.findByPk(req.params.id);
+        if (!board) {
+            return res.redirect(`/`);
+        }
+        await board.update(req.body);
+        res.redirect(`/boards/${board.id}`);
+    });
+
+    app.post('/api/boards/:id/delete', restricted, async (req, res) => {
+        const board = await Board.findByPk(req.params.id);
+        if (!board) {
+            return res.redirect(`/`);
+        }
+        await board.destroy();
+        res.redirect(`/`);
+    });
+
     app.get('/boards/:id', restricted, async (req, res) => {
         const board = await Board.findOne({ where: { id: parseInt(req.params.id) } });
 
@@ -10,6 +28,10 @@ export default function (app: express.Express): void {
             return res.redirect('/');
         }
 
-        res.render('boards/detail', { board, grid: await board.grid(), boards: await req.signedIn.boards() });
+        res.render('boards/detail', {
+            board,
+            grid: await board.grid(),
+            boards: await req.signedIn.boards(),
+        });
     });
 }

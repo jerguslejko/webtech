@@ -80,59 +80,23 @@ window.onscroll = function () {
 };
 ////////////////////////////////////////////////////////////////////////////////////////
 // POP UP
-var modal = document.getElementById('modal');
-var close_modal = document.getElementsByClassName('close-modal')[0];
 
-var last_call_from;
-
-close_modal.onclick = function () {
-    modal.style.display = 'none';
-};
-// buttons to open pop up
-$('.open-modal').on('click', function (event) {
-    var modal_type = $(this).text();
-    var title;
-    var submit;
-    last_call_from = $(this).parent().attr('id');
-    if (modal_type === 'New') {
-        submit = 'Create';
-
-        if ($(this).parent().hasClass('row')) {
-            title = 'Create new Column';
-        } else if ($(this).parent().hasClass('column-portlet')) {
-            title = 'Create new Task';
-        }
-    } else if (modal_type === 'Edit') {
-        submit = 'Save';
-
-        if ($(this).parent().hasClass('portlet')) {
-            title = 'Edit Task';
-        } else if ($(this).parent().hasClass('column-portlet')) {
-            title = 'Edit Column';
-        }
-    }
-
-    $('.modal').find('.modal-content').find('.modal-header').find('h2').text(title);
-    $('.modal')
-        .find('.modal-content')
-        .find('.modal-body')
-        .html(
-            '<label for="name">Name:</label><input type="text" id="name" name="name"><br><br><label for="desc">Description:</label><input type="text" id="desc" name="desc"><br><br>',
-        );
-    $('.modal').find('.modal-content').find('.modal-footer').find('button').text(submit);
-    modal.style.display = 'block';
+$('.modal-wrapper .open-modal').on('click', function () {
+    $('.modal', $(this).parent('.modal-wrapper')).show();
+});
+$('.modal-wrapper .close-modal').on('click', function () {
+    $(this).closest('.modal').hide();
 });
 
-$('.submit-modal').on('click', function (event) {
-    modal.style.display = 'none';
-});
-
-// When the user clicks anywhere outside of the popup, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+$('[data-delete]').on('click', function () {
+    if (confirm('Are you sure?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = $(this).attr('data-delete');
+        document.body.appendChild(form);
+        form.submit();
     }
-};
+});
 
 function postRequest(url, payload) {
     return fetch(url, {

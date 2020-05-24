@@ -1,43 +1,160 @@
 extends ../_layout
 
 block content
-    <div class="row board">
-    <div class="board-title"><h1>#{board.title}</h1></div>
+    <div class="board">
+        <div class="board-title">
+            <h1>#{board.title}</h1>
 
-    for record, i in grid
-        - var col = record[0]
-        - var tasks = record[1]
-            <div class="column-portlet" id= "col" + i data-column-id="#{col.id}">
-                <h3>#{col.title}</h3>
-                <button class="open-modal">Edit</button>
-                <button class="open-modal">New</button>
-                <div class="column" data-column-id="#{col.id}">
-                    for task, j in tasks
-                        <div class="portlet" id= "task" + i + j data-task-id="#{task.id}">
-                            <h4>#{task.body}</h4>
-                            <button class="open-modal">Edit</button>
+            <div class="flex">
+                <div class="modal-wrapper">
+                    <button class="open-modal">Edit board</button>
+                    <form class="modal" method="post" action="/api/boards/#{board.id}/update">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Edit board</h2>
+                                <span class="close-modal hvr-btn">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <label class="form-field">
+                                    <p>Title:</p>
+                                    <input type="text" name="title" value="#{board.title}" />
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" data-delete="/api/boards/#{board.id}/delete">Delete board</button>
+                                <button class="submit-modal">Submit</button>
+                            </div>
                         </div>
+                    </form>
+                </div>
+                <div class="modal-wrapper ml-20">
+                    <button class="open-modal">New column</button>
+                    <form class="modal" method="post" action="/api/columns/create">
+                        <input type="hidden" name="board_id" value="#{board.id}"/>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>New column</h2>
+                                <span class="close-modal hvr-btn">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <label class="form-field">
+                                    <p>Title:</p>
+                                    <input type="text" name="title" />
+                                </label>
+                                <label class="form-field">
+                                    <p>Color:</p>
+                                    <input type="color" name="color" value="#ffffff" />
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="submit-modal">Create</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-    <button class="open-modal">New</button>
-    </div>
+        </div>
 
+        <div class="row">
+            for record, i in grid
+                - var col = record[0]
+                - var tasks = record[1]
+                    <div class="column-portlet" id= "col" + i data-column-id="#{col.id}">
+                        <div class="column-header" style="background: #{col.color}">
+                            <h3>#{col.title}</h3>
+                            <div class="ml-20 flex">
+                                <div class="modal-wrapper">
+                                    <button class="open-modal">Edit column</button>
 
+                                    <form class="modal" method="post" action="/api/columns/#{col.id}/update">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2>Edit column</h2>
+                                                <span class="close-modal hvr-btn">&times;</span>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label class="form-field">
+                                                    <p>Title:</p>
+                                                    <input type="text" name="title" value="#{col.title}" />
+                                                </label>
+                                                <label class="form-field">
+                                                    <p>Color:</p>
+                                                    <input type="color" name="color" value="#{col.color}" />
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-delete="/api/columns/#{col.id}/delete">Delete column</button>
+                                                <button class="submit-modal">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 
+                                <div class="modal-wrapper ml-20">
+                                    <button class="open-modal">New task</button>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
+                                    <form class="modal" method="post" action="/api/columns/#{col.id}/new-task">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2>Title</h2>
+                                                <span class="close-modal hvr-btn">&times;</span>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label class="form-field">
+                                                    <p>Title:</p>
+                                                    <input type="text" name="name" />
+                                                </label>
+                                                <label class="form-field">
+                                                    <p>Body:</p>
+                                                    <textarea name="body" rows="5"></textarea>
+                                                </label>
+                                                <label class="form-field">
+                                                    <p>Due date:</p>
+                                                    <input name="deadline" type="date" />
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="submit-modal">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column" data-column-id="#{col.id}">
+                            for task, j in tasks
+                                <div class="task portlet modal-wrapper" id= "task" + i + j data-task-id="#{task.id}">
+                                    <h4>#{task.name}</h4>
+                                    <button class="open-modal">Edit</button>
 
-            <div class="modal-header">
-                <span class="close-modal hvr-btn">&times;</span>
-                <h2>Title</h2>
-            </div>
-            <div class="modal-body">
-                <label for="colname">Name:</label>
-                <input type="text" id="name" name="name"><br><br>
-            </div>
-            <div class="modal-footer">
-                <button class="submit-modal">Submit</button>
-            </div>
+                                    <form class="modal" method="post" action="/api/tasks/#{task.id}/update">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2>Edit task</h2>
+                                                <span class="close-modal hvr-btn">&times;</span>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label class="form-field">
+                                                    <p>Name:</p>
+                                                    <input type="text" name="name" value="#{task.name}" />
+                                                </label>
+                                                <label class="form-field">
+                                                    <p>Body:</p>
+                                                    <textarea name="body" rows="5">#{task.body}</textarea>
+                                                </label>
+                                                <label class="form-field">
+                                                    <p>Due date:</p>
+                                                    <input name="deadline" type="date" value="#{task.formattedDeadline}"/>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-delete="/api/tasks/#{task.id}/delete">Delete task</button>
+                                                <button class="submit-modal">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
         </div>
     </div>

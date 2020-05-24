@@ -16,4 +16,22 @@ export default function (app: express.Express): void {
 
         res.json();
     });
+
+    app.post('/api/tasks/:id/delete', restricted, async (req, res) => {
+        const task = await Task.findByPk(req.params.id);
+        if (!task) {
+            return res.redirect(`/`);
+        }
+        await task.destroy();
+        res.redirect(`/boards/${task.board_id}`);
+    });
+
+    app.post('/api/tasks/:id/update', restricted, async (req, res) => {
+        const task = await Task.findByPk(req.params.id);
+        if (!task) {
+            return res.redirect(`/`);
+        }
+        await task.update(req.body);
+        res.redirect(`/boards/${task.board_id}`);
+    });
 }

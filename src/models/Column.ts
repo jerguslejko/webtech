@@ -6,6 +6,7 @@ import { Board } from './Board';
 export class Column extends Model {
     public id!: number;
     public title!: string;
+    public color!: string;
     public user_id!: number;
     public board_id!: number;
     public ordering!: number;
@@ -40,6 +41,7 @@ export class Column extends Model {
         Column.init(
             {
                 title: DataTypes.STRING,
+                color: { type: DataTypes.STRING, defaultValue: '#ffffff' },
                 user_id: DataTypes.NUMBER,
                 board_id: DataTypes.NUMBER,
                 ordering: DataTypes.NUMBER,
@@ -54,6 +56,11 @@ export class Column extends Model {
                             .map((board) => board.ordering)
                             .reduce((xs, x) => Math.max(xs, x), 0);
                         column.ordering = last_ordering + 1;
+                    },
+
+                    async beforeDestroy(column) {
+                        const tasks = await column.tasks();
+                        tasks.forEach((task) => task.destroy());
                     },
                 },
             },
