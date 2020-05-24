@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as https from 'https';
+import * as fs from 'fs';
 import * as passport from 'passport';
 import * as path from 'path';
 import * as database from './database';
@@ -63,10 +65,18 @@ aboutRoutes(app);
 async function main() {
     await database.connect();
 
-    app.listen(PORT, () => {
-        console.clear();
-        console.log(`Server running on http://localhost:${PORT}`);
-    });
+    https
+        .createServer(
+            {
+                key: fs.readFileSync(__dirname + '/../cert/server.key', 'utf8'),
+                cert: fs.readFileSync(__dirname + '/../cert/server.cert', 'utf8'),
+            },
+            app,
+        )
+        .listen(PORT, () => {
+            console.clear();
+            console.log(`Server running on https://localhost:${PORT}`);
+        });
 }
 
 main();
