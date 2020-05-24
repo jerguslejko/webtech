@@ -14,6 +14,7 @@ import usersRoutes from './routes/users';
 import boardsRoutes from './routes/boards';
 import tasksRoutes from './routes/tasks';
 import columnsRoutes from './routes/columns';
+import aboutRoutes from './routes/about';
 
 declare global {
     namespace Express {
@@ -57,6 +58,7 @@ usersRoutes(app);
 boardsRoutes(app);
 tasksRoutes(app);
 columnsRoutes(app);
+aboutRoutes(app);
 
 async function main() {
     await database.connect();
