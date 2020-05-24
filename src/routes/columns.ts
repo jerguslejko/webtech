@@ -4,7 +4,7 @@ import { Column } from '../models/Column';
 
 export default function (app: express.Express): void {
     app.post('/api/columns/create', restricted, async (req, res) => {
-        const column = await Column.create(req.body);
+        const column = await Column.create({ ...req.body, user_id: req.signedIn.id });
         res.redirect(`/boards/${column.board_id}`);
     });
 

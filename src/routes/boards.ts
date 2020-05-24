@@ -4,7 +4,7 @@ import { Board } from '../models';
 
 export default function (app: express.Express): void {
     app.post('/api/boards/create', restricted, async (req, res) => {
-        const board = await Board.create(req.body);
+        const board = await Board.create({ ...req.body, user_id: req.signedIn.id });
         res.redirect(`/boards/${board.id}`);
     });
 
