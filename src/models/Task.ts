@@ -20,6 +20,13 @@ export class Task extends Model {
         return moment(this.deadline).format('YYYY-MM-DD');
     }
 
+    get nicelyFormattedDeadline() {
+        if (!this.deadline) return;
+        if (Number.isNaN(this.deadline.getTime())) return;
+
+        return moment(this.deadline).format('DD/MM/YYYY');
+    }
+
     async column(): Promise<Column> {
         const column = await Column.findOne({ where: { id: this.column_id } });
 

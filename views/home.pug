@@ -10,4 +10,22 @@ block content
             for board in boards
                 <a href="/boards/#{board.id}" class="homepage-board">#{board.title}</a>
         </div>
+
+        <h2>Upcoming deadlines:</h2>
+
+        <div>
+            for task in upcoming
+                <a href="/boards/#{task.board_id}" class="homepage-task">
+                    <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
+                </a>
+        </div>
+
+        <h2>Missed deadlines:</h2>
+
+        <div>
+            for task in missed
+                <a href="/boards/#{task.board_id}" class="homepage-task">
+                    <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
+                </a>
+        </div>
     </div>

@@ -303,3 +303,19 @@ button:hover {
     border-radius: 1em;
     margin: 0.5em 0;
 }
+
+.homepage-task {
+    display: block;
+    text-decoration: none;
+    color: black;
+    background: white;
+    padding: 1em;
+    border-radius: 1em;
+    margin: 0.5em 0;
+}
+
+.homepage-deadline {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9em;
+    font-weight: 600;
+}
