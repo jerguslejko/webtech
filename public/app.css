@@ -1,11 +1,17 @@
 body {
-    background-image: url('/background.png');
+    background-image: url('/image/background.png');
     background-size: cover;
     background-attachment: fixed;
     font-family: sans-serif;
     margin: 0px;
 }
-
+.logo {
+    display: block;
+    width: 1.15em;
+    height: 1.15em;
+    background: url('/image/logo.svg') no-repeat center;
+    background-size: 2.6em 2.6em;
+}
 .text-right {
     text-align: right;
 }
@@ -47,6 +53,7 @@ body {
 
     font-weight: bold;
     text-transform: lowercase;
+    font-family: 'Lato', 'Trebuchet MS', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Add an active class to highlight the current page */
@@ -75,7 +82,6 @@ body {
     color: #fff;
     font-weight: bold;
     margin: 0;
-    text-transform: lowercase;
     background-color: rgb(47, 26, 56);
 }
 
