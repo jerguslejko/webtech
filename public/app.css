@@ -2,7 +2,7 @@ body {
     background-image: url('/image/background.png');
     background-size: cover;
     background-attachment: fixed;
-    font-family: sans-serif;
+    font-family: "Lucida Console", Monaco, monospace;
     margin: 0px;
 }
 .logo {
@@ -10,7 +10,7 @@ body {
     width: 1.15em;
     height: 1.15em;
     background: url('/image/logo.svg') no-repeat center;
-    background-size: 2.6em 2.6em;
+    background-size: 2em 2em;
 }
 .text-right {
     text-align: right;
@@ -26,13 +26,16 @@ body {
     float: left;
     padding-bottom: 10px;
 }
+
 .column-portlet {
     float: left;
     margin: 1em 1em 1em 1em;
+
 }
 .portlet {
     margin: 1em 1em 1em 1em;
     padding: 0.5em;
+
 }
 
 /* Add a black background color to the top navigation */
@@ -40,21 +43,31 @@ body {
     background-color: rgb(47, 26, 56);
     overflow: hidden;
 }
+.boardback{
+    background: #000;
+}
+h1 h2 h5 .nava{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    
 
+}
+p{
+    font-size: 1.5em;
+
+}
+h4, a {
+    font-family: "Lucida Console", Monaco, monospace;
+}
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav a{
     float: left;
     display: block;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 25px;
 
     color: #fff;
-
-    font-weight: bold;
-    text-transform: lowercase;
-    font-family: 'Lato', 'Trebuchet MS', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Add an active class to highlight the current page */
@@ -76,7 +89,7 @@ body {
 
 /* Style the dropdown button to fit inside the topnav */
 .dropdown .dropbtn {
-    font-size: 17px;
+    font-size: 25px;
     border: none;
     outline: none;
     padding: 14px 16px;
@@ -87,8 +100,9 @@ body {
 }
 
 .board {
-    background-color: rgba(0, 0, 0, 0.233);
+    background-color: rgba(0, 0, 0, 0.5);
     margin: 1em;
+
 }
 
 .board-title {
@@ -128,7 +142,7 @@ body {
 .topnav a:hover,
 .dropdown:hover,
 .dropbtn:hover,
-.dropdown-content a:hover {
+.dropdown-content a:hover, .hvr:hover {
     background-color: rgb(133, 88, 127);
     color: white;
 }
@@ -257,7 +271,8 @@ button:focus {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em;
-    background: rgba(0, 0, 0, 0.05);
+    color : rgb(0, 0, 0);
+    text-shadow: 1px 1px rgb(255, 255, 255);
 }
 
 .form-field {
@@ -286,21 +301,27 @@ button {
 button:hover {
     box-shadow: 0 0 4px rgba(0, 0, 255, 0.2);
 }
+.nava{
+    font-weight: bold;
+}
 
 .homepage {
     padding: 50px;
-    background: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 800px;
     max-width: 800px;
     margin: 0 auto;
     height: 100%;
+    color: white;
+
 }
 
 .homepage-board {
     display: block;
     text-decoration: none;
     font-weight: bold;
-    color: black;
-    background: white;
+    color: white;
+    background: rgb(47, 26, 56);
     padding: 1em;
     border-radius: 1em;
     margin: 0.5em 0;
@@ -309,15 +330,15 @@ button:hover {
 .homepage-task {
     display: block;
     text-decoration: none;
-    color: black;
-    background: white;
+    color: white;
+    background: rgb(47, 26, 56);
     padding: 1em;
     border-radius: 1em;
     margin: 0.5em 0;
 }
 
 .homepage-deadline {
-    color: rgba(0, 0, 0, 0.6);
+    color: rgb(143, 143, 143);
     font-size: 0.9em;
     font-weight: 600;
 }

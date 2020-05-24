@@ -31,7 +31,7 @@ block content
 
         <div>
             for board in boards
-                <a href="/boards/#{board.id}" class="homepage-board">#{board.title}</a>
+                <a href="/boards/#{board.id}" class="homepage-board hvr">#{board.title}</a>
         </div>
 
         <h2>Upcoming deadlines:</h2>
@@ -41,7 +41,7 @@ block content
                 <div class="homepage-call">There are no upcoming deadlines. Take a break.</div>
 
             for task in upcoming
-                <a href="/boards/#{task.board_id}" class="homepage-task">
+                <a href="/boards/#{task.board_id}" class="homepage-task hvr">
                     <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
                 </a>
         </div>
@@ -53,7 +53,7 @@ block content
                 <div class="homepage-call">You have not missed any deadlines. Nice!</div>
 
             for task in missed
-                <a href="/boards/#{task.board_id}" class="homepage-task">
+                <a href="/boards/#{task.board_id}" class="homepage-task hvr">
                     <span class="homepage-deadline">#{task.nicelyFormattedDeadline}</span> #{task.name}
                 </a>
         </div>
