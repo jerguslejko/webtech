@@ -123,9 +123,17 @@ block content
                         </div>
                         <div class="column" data-column-id="#{col.id}">
                             for task, j in tasks
-                                <div class="task portlet modal-wrapper" id= "task" + i + j data-task-id="#{task.id}">
-                                    <h4>#{task.name}</h4>
-                                    <button class="open-modal">Edit</button>
+                                <div class="task portlet modal-wrapper open-modal" id= "task" + i + j data-task-id="#{task.id}">
+                                    <h4 class="open-modal">#{task.name}</h4>
+                                    if task.deadline
+                                        if task.dueInDays() > 7
+                                            <h5 class="open-modal">Due on #{task.formattedDeadline()}</h5>
+                                        if task.dueInDays() > 0
+                                            <h5 class="open-modal">Due in #{task.dueInDays()} days</h5>
+                                        if task.dueInDays() == 0
+                                            <h5 class="open-modal">Due today!</h5>
+                                        if task.dueInDays() < 0
+                                            <h5 class="open-modal">#{-task.dueInDays()} days late!</h5>
 
                                     <form class="modal" method="post" action="/api/tasks/#{task.id}/update">
                                         <div class="modal-content">

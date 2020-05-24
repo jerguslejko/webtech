@@ -37,6 +37,10 @@ export class Task extends Model {
         return column;
     }
 
+    dueInDays() {
+        return moment(this.deadline).diff(moment(), 'days')
+    }
+
     static boot() {
         Task.init(
             {
