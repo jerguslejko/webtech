@@ -3,6 +3,11 @@ import { restricted } from '../auth';
 import { Board } from '../models';
 
 export default function (app: express.Express): void {
+    app.post('/api/boards/create', restricted, async (req, res) => {
+        const board = await Board.create(req.body);
+        res.redirect(`/boards/${board.id}`);
+    });
+
     app.post('/api/boards/:id/update', restricted, async (req, res) => {
         const board = await Board.findByPk(req.params.id);
         if (!board) {
