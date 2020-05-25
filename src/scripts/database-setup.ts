@@ -17,18 +17,13 @@ async function main() {
     });
 
     const personal = await Board.create({ title: 'Personal', user_id: user.id });
-    const personal_todo = await personal.addColumn({ title: 'TODO' });
-    times(5, () =>
-        personal_todo.addTask({ name: faker.random.words(5), body: faker.random.words(10) }),
-    );
-    const personal_in_progress = await personal.addColumn({ title: 'In Progress' });
-    times(3, () =>
-        personal_in_progress.addTask({ name: faker.random.words(5), body: faker.random.words(10) }),
-    );
-    const personal_done = await personal.addColumn({ title: 'Done' });
-    times(2, () =>
-        personal_done.addTask({ name: faker.random.words(5), body: faker.random.words(10) }),
-    );
+    const personal_todo = await personal.addColumn({ title: 'To do', color:'#eb4034'});
+    personal_todo.addTask({ name: 'Call mum'})
+    personal_todo.addTask({ name: 'Clean kitchen'})
+    personal_todo.addTask({ name: 'Pay water bill', deadline : new Date()})
+    const personal_food = await personal.addColumn({ title: 'Shopping', color:'#464a8c' });
+    personal_food.addTask({ name: 'Milk'})
+    personal_food.addTask({ name: 'Eggs'})
 
     const work = await Board.create({ title: 'Work', user_id: user.id });
     const work_backlog = await work.addColumn({ title: 'Backlog' });

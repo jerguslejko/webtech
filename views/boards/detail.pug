@@ -7,7 +7,7 @@ block content
 
             <div class="flex">
                 <div class="modal-wrapper">
-                    <button class="open-modal">Edit board</button>
+                    <div class="open-modal more-btn white-svg-btn svg-btn"></div>
                     <form class="modal" method="post" action="/api/boards/#{board.id}/update">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -28,7 +28,7 @@ block content
                     </form>
                 </div>
                 <div class="modal-wrapper ml-20">
-                    <button class="open-modal">New column</button>
+                    <div class="open-modal new-btn white-svg-btn svg-btn"></div>
                     <form class="modal" method="post" action="/api/columns/create">
                         <input type="hidden" name="board_id" value="#{board.id}"/>
                         <div class="modal-content">
@@ -66,7 +66,7 @@ block content
                         <h2>#{col.title}</h2>
                         <div class="ml-20 flex">
                             <div class="modal-wrapper">
-                                <button class="open-modal">Edit column</button>
+                                <div class="open-modal more-btn black-svg-btn svg-btn"></div>
 
                                 <form class="modal" method="post" action="/api/columns/#{col.id}/update">
                                     <div class="modal-content">
@@ -93,7 +93,7 @@ block content
                             </div>
 
                             <div class="modal-wrapper ml-20">
-                                <button class="open-modal">New task</button>
+                                <div class="open-modal new-btn black-svg-btn svg-btn"></div>
 
                                 <form class="modal" method="post" action="/api/columns/#{col.id}/new-task">
                                     <div class="modal-content">

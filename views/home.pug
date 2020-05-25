@@ -4,14 +4,14 @@ block content
     <div class="homepage">
         <div class="big-logo"></div>
 
-        <h1>INSERT TODAYS DATE</h1>
+        <h2 class="date"></h2>
         <h1>Hey #{signedIn.username}, welcome back to Busybee!</h1>
 
         <div class="flex items-center space-between">
             <h2>Your boards:</h2>
 
             <div class="modal-wrapper ml-20">
-                <button class="open-modal">New board</button>
+                <div class="open-modal new-btn white-svg-btn svg-btn"></div>
                 <form class="modal" method="post" action="/api/boards/create">
                     <div class="modal-content">
                         <div class="modal-header">
