@@ -2,7 +2,7 @@ body {
     background-image: url('/image/background.png');
     background-size: cover;
     background-attachment: fixed;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: 'Lucida Console', Monaco, monospace;
     margin: 0px;
 }
 .logo {
@@ -26,50 +26,47 @@ body {
     float: left;
     padding-bottom: 10px;
 }
-.open-modal:hover{
+.open-modal:hover {
     color: rgb(126, 29, 95);
 }
-.column-portlet:hover, .portlet:hover{
+.column-portlet:hover,
+.portlet:hover {
     border: 4px solid rgb(255, 255, 255);
-
 }
 .column-portlet {
     float: left;
     margin: 1em 1em 1em 1em;
-
 }
 .portlet {
     margin: 1em 1em 1em 1em;
     padding: 0.5em;
-
 }
 .topnav {
     background-color: rgba(47, 26, 56);
     overflow: auto;
     border-bottom: 2px solid rgba(255, 255, 255);
-
-
 }
-.row{
+.row {
     background: rgba(0, 0, 0, 0.589);
     height: 1000px;
     min-height: 1000px;
     overflow: auto;
 }
-h1, h2, h5, .nava{
+h1,
+h2,
+h5,
+.nava {
     font-family: Roboto, Helvetica, Arial, sans-serif;
-    
-
 }
-p{
+p {
     font-size: 1.5em;
-
 }
-h4, a {
-    font-family: "Lucida Console", Monaco, monospace;
+h4,
+a {
+    font-family: 'Lucida Console', Monaco, monospace;
 }
 /* Style the links inside the navigation bar */
-.topnav a{
+.topnav a {
     float: left;
     display: block;
     text-align: center;
@@ -108,8 +105,6 @@ h4, a {
     background-color: rgba(0, 0, 0, 0.5);
     margin: 1em;
     border: 4px solid rgba(255, 255, 255, 0.692);
-
-
 }
 
 .board-title {
@@ -149,7 +144,8 @@ h4, a {
 .topnav a:hover,
 .dropdown:hover,
 .dropbtn:hover,
-.dropdown-content a:hover, .hvr:hover {
+.dropdown-content a:hover,
+.hvr:hover {
     background-color: rgb(133, 88, 127);
     color: white;
 }
@@ -279,15 +275,15 @@ button:focus {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em;
-    color : rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     text-shadow: 1px 1px rgb(255, 255, 255);
 }
 
 .form-field {
     display: block;
     margin: 1em 0;
-    color : white;
-    font-family: "Lucida Console", Monaco, monospace;
+    color: white;
+    font-family: 'Lucida Console', Monaco, monospace;
 }
 .form-field p {
     font-weight: 600;
@@ -311,19 +307,19 @@ button {
 button:hover {
     box-shadow: 0 0 4px rgba(0, 0, 255, 0.2);
 }
-.nava{
+.nava {
     font-weight: bold;
 }
-.open-modal h4{
-    cursor : context-menu;
+.open-modal h4 {
+    cursor: context-menu;
 }
-.task{
+.task {
     cursor: move;
 }
-.column-header{
-    cursor:move;
+.column-header {
+    cursor: move;
 }
-.modal{
+.modal {
     cursor: default;
 }
 
@@ -337,8 +333,7 @@ button:hover {
     margin: 0 auto;
     height: 100%;
     color: white;
-    overflow : auto;
-
+    overflow: auto;
 }
 
 .homepage-board {
@@ -382,9 +377,9 @@ button:hover {
     font-weight: bold;
 }
 
-.big-logo{
+.big-logo {
     display: block;
-    float:right;
+    float: right;
     width: 10em;
     height: 10em;
     background: url('/image/logo.svg') no-repeat center;
