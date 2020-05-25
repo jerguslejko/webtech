@@ -31,10 +31,9 @@ body {
 }
 .registerlink,
 .registerlink:visited,
-.registerlink:active{
-    color:white;
+.registerlink:active {
+    color: white;
 }
-
 
 .open-modal:hover,
 .registerlink:hover {
@@ -57,7 +56,6 @@ body {
     background-color: rgba(47, 26, 56);
     overflow: auto;
     border-bottom: 3px solid rgb(126, 29, 95);
-
 }
 .row {
     background: rgba(0, 0, 0, 0.589);
