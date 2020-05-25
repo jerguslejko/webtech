@@ -2,7 +2,8 @@ extends _layout
 
 block content
     <div class="homepage">
-        <h1>Login</h1>
+
+        <h1>Login to Busybee</h1>
 
         if error
           <div class="validation-error">#{error}</div>
@@ -19,5 +20,9 @@ block content
             </label>
 
             <button type="submit">Log in</button>
+            <br><br>
+            <b><a class="registerlink" href="/register">Not got an account? Register here!</a></b>
+            <div class="big-logo" style="float:none></div>
+
         </form>
     </div>

@@ -59,9 +59,9 @@ block content
             for record, i in grid
                 - var col = record[0]
                 - var tasks = record[1]
-                    <div class="column-portlet" id= "col" + i data-column-id="#{col.id}">
+                    <div class="column-portlet" id= "col" + i data-column-id="#{col.id}"  style="border :5px solid #{col.color}">
                         if col.color
-                            <div class="column-header" style="background: #{col.color}">
+                            <div class="column-header">
      
                         <h2>#{col.title}</h2>
                         <div class="ml-20 flex">
@@ -125,7 +125,7 @@ block content
                         </div>
                         <div class="column" data-column-id="#{col.id}">
                             for task, j in tasks
-                                <div class="task portlet modal-wrapper open-modal" id= "task" + i + j data-task-id="#{task.id}">
+                                <div class="task portlet modal-wrapper open-modal" id= "task" + i + j data-task-id="#{task.id}" style="border :2px solid rgba(0, 0, 0, 0.63)">
                                     <h4 class="open-modal">#{task.name}</h4>
                                     if task.deadline
                                         if task.dueInDays() > 7
