@@ -15,3 +15,9 @@ npm run database:setup
 ```bash
 npm run dev
 ```
+- Open it on your web browser (Firefox reccomended) via https://localhost:5000
+- - Your browser may deem our app not safe (because we have a self-issued SSL certificate). Ignore this.
+
+- You can login with our demo account details:
+  - Username = "user"
+  - Password = "password"
