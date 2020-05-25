@@ -296,7 +296,8 @@ button:focus {
     color: white;
     font-family: 'Lucida Console', Monaco, monospace;
 }
-.form-field p {
+.form-field span {
+    display: block;
     font-weight: 600;
     font-size: 17px;
     margin: 0 0 0.5em 0;
@@ -326,6 +327,7 @@ button:hover {
 }
 .task {
     cursor: move;
+    border: 2px solid rgba(0, 0, 0, 0.63);
 }
 .column-header {
     cursor: move;
@@ -390,9 +392,21 @@ button:hover {
 
 .big-logo {
     display: block;
-    float: right;
     width: 10em;
     height: 10em;
     background: url('/image/logo.svg') no-repeat center;
     background-size: 10em 10em;
+}
+
+.due-gt-7 {
+    color: #274e70;
+}
+.due-gt-0 {
+    color: #27704f;
+}
+.due-eq-0 {
+    color: #287027;
+}
+.due-lt-0 {
+    color: #8f1818;
 }

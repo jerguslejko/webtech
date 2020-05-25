@@ -16,7 +16,7 @@ block content
                             </div>
                             <div class="modal-body">
                                 <label class="form-field">
-                                    <p>Title:</p>
+                                    <span>Title:</span>
                                     <input type="text" name="title" value="#{board.title}" />
                                 </label>
                             </div>
@@ -38,11 +38,11 @@ block content
                             </div>
                             <div class="modal-body">
                                 <label class="form-field">
-                                    <p>Title:</p>
+                                    <span>Title:</span>
                                     <input type="text" name="title" />
                                 </label>
                                 <label class="form-field">
-                                    <p>Color:</p>
+                                    <span>Color:</span>
                                     <input type="color" name="color" value="#ffffff" />
                                 </label>
                             </div>
@@ -56,13 +56,13 @@ block content
         </div>
 
         <div class="row">
-            for record, i in grid
+            for record in grid
                 - var col = record[0]
                 - var tasks = record[1]
-                    <div class="column-portlet" id= "col" + i data-column-id="#{col.id}"  style="border :5px solid #{col.color}">
+                    <div class="column-portlet" data-column-id="#{col.id}"  style="border: 5px solid #{col.color}">
                         if col.color
                             <div class="column-header">
-     
+
                         <h2>#{col.title}</h2>
                         <div class="ml-20 flex">
                             <div class="modal-wrapper">
@@ -76,11 +76,11 @@ block content
                                         </div>
                                         <div class="modal-body">
                                             <label class="form-field">
-                                                <p>Title:</p>
+                                                <span>Title:</span>
                                                 <input type="text" name="title" value="#{col.title}" />
                                             </label>
                                             <label class="form-field">
-                                                <p>Color:</p>
+                                                <span>Color:</span>
                                                 <input type="color" name="color" value="#{col.color}" />
                                             </label>
                                         </div>
@@ -103,15 +103,15 @@ block content
                                         </div>
                                         <div class="modal-body">
                                             <label class="form-field">
-                                                <p>Title:</p>
+                                                <span>Title:</span>
                                                 <input type="text" name="name" />
                                             </label>
                                             <label class="form-field">
-                                                <p>Body:</p>
+                                                <span>Body:</span>
                                                 <textarea name="body" rows="5"></textarea>
                                             </label>
                                             <label class="form-field">
-                                                <p>Due date:</p>
+                                                <span>Due date:</span>
                                                 <input name="deadline" type="date" />
                                             </label>
                                         </div>
@@ -125,17 +125,17 @@ block content
                         </div>
                         <div class="column" data-column-id="#{col.id}">
                             for task, j in tasks
-                                <div class="task portlet modal-wrapper open-modal" id= "task" + i + j data-task-id="#{task.id}" style="border :2px solid rgba(0, 0, 0, 0.63)">
+                                <div class="task portlet modal-wrapper open-modal" data-task-id="#{task.id}">
                                     <h4 class="open-modal">#{task.name}</h4>
                                     if task.deadline
                                         if task.dueInDays() > 7
-                                            <h4 class="open-modal" style="color:#274e70">Due on #{task.formattedDeadline()}</h4>
+                                            <h4 class="open-modal due-gt-7">Due on #{task.formattedDeadline()}</h4>
                                         if task.dueInDays() > 0
-                                            <h4 class="open-modal" style="color:#27704f">Due in #{task.dueInDays()} days</h4>
+                                            <h4 class="open-modal due-gt-0">Due in #{task.dueInDays()} days</h4>
                                         if task.dueInDays() == 0
-                                            <h4 class="open-modal" style="color:#287027">Due today!</h4>
+                                            <h4 class="open-modal due-eq-0">Due today!</h4>
                                         if task.dueInDays() < 0
-                                            <h4 class="open-modal" style="color:#8f1818">#{-task.dueInDays()} days late!</h4>
+                                            <h4 class="open-modal due-lt-0">#{-task.dueInDays()} days late!</h4>
 
                                     <form class="modal" method="post" action="/api/tasks/#{task.id}/update">
                                         <div class="modal-content">
@@ -145,15 +145,15 @@ block content
                                             </div>
                                             <div class="modal-body">
                                                 <label class="form-field">
-                                                    <p>Name:</p>
+                                                    <span>Name:</span>
                                                     <input type="text" name="name" value="#{task.name}" />
                                                 </label>
                                                 <label class="form-field">
-                                                    <p>Body:</p>
+                                                    <span>Body:</span>
                                                     <textarea name="body" rows="5">#{task.body}</textarea>
                                                 </label>
                                                 <label class="form-field">
-                                                    <p>Due date:</p>
+                                                    <span>Due date:</span>
                                                     <input name="deadline" type="date" value="#{task.formattedDeadline}"/>
                                                 </label>
                                             </div>
