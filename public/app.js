@@ -43,27 +43,23 @@ $('.row').sortable({
         ui.item.removeData('move_handler');
     },
 });
-function isDark( color ) {
+function isDark(color) {
     var match = /rgb\((\d+).*?(\d+).*?(\d+)\)/.exec(color);
-    return parseFloat(match[1])
-         + parseFloat(match[2])
-         + parseFloat(match[3])
-           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
+    return parseFloat(match[1]) + parseFloat(match[2]) + parseFloat(match[3]) < (3 * 256) / 2; // r+g+b should be less than half of max (3 * 256)
 }
-function disable_board(){
-    $(".row").sortable( "disable" );
-    $(".column").sortable( "disable" );
+function disable_board() {
+    $('.row').sortable('disable');
+    $('.column').sortable('disable');
 }
-function enable_board(){
-
-    $(".row").sortable( "enable" );
-    $(".column").sortable( "enable" );
+function enable_board() {
+    $('.row').sortable('enable');
+    $('.column').sortable('enable');
 }
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-today = dd + '/' + mm  + '/' + yyyy;
+today = dd + '/' + mm + '/' + yyyy;
 $('.date').html(today);
 
 function tilt_direction(item) {
@@ -94,13 +90,7 @@ function responsive() {
         x.className = 'topnav';
     }
 }
-window.onscroll = function () {
-    if (window.pageYOffset > 0) {
-        navbar.classList.add('sticky');
-    } else {
-        navbar.classList.remove('sticky');
-    }
-};
+
 ////////////////////////////////////////////////////////////////////////////////////////
 // POP UP
 

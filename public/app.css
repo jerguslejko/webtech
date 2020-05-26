@@ -5,7 +5,7 @@ body {
     font-family: 'Lucida Console', Monaco, monospace;
     margin: 0px;
 }
-.more-btn{
+.more-btn {
     display: block;
     width: 3em;
     height: 1em;
@@ -14,7 +14,7 @@ body {
     background-size: 2.5em 2.5em;
     margin-top: 0.5em;
 }
-.new-btn{
+.new-btn {
     display: block;
     width: 2em;
     height: 2em;
@@ -22,11 +22,11 @@ body {
     background: url('/image/new.svg') no-repeat center;
     background-size: 1.5em 1.5em;
 }
-.black-svg-btn{
+.black-svg-btn {
     filter: invert(100%);
 }
-.svg-btn:hover{
-    filter:invert(50%);
+.svg-btn:hover {
+    filter: invert(50%);
     cursor: pointer;
 }
 .logo {
@@ -78,8 +78,15 @@ body {
     box-shadow: 5px 10px 5px #8888889d;
 }
 .topnav {
+    display: flex;
     background-color: rgba(47, 26, 56);
     border-bottom: 3px solid rgb(126, 29, 95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.topnav + * {
+    padding-top: 50px !important;
 }
 .row {
     background: rgba(0, 0, 0, 0.589);
@@ -100,7 +107,6 @@ a {
 }
 /* Style the links inside the navigation bar */
 .topnav a {
-    float: left;
     display: block;
     text-align: center;
     padding: 14px 16px;
@@ -186,16 +192,6 @@ a {
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.sticky + .content {
-    padding-top: 0px;
 }
 
 .modal {
